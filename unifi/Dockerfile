@@ -15,8 +15,7 @@ RUN \
         gnupg2 \
         gnupg1 \
     \
-    && apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 7F0CEB10 \
-    #&& wget -qO - https://www.mongodb.org/static/pgp/server-3.4.asc | apt-key add - \
+    && wget -qO - https://www.mongodb.org/static/pgp/server-3.4.asc | apt-key add - \
     && echo "deb http://repo.mongodb.org/apt/debian "$(lsb_release -sc)"/mongodb-org/3.4 main" | tee /etc/apt/sources.list.d/mongodb-org-3.4.list \
     \
     && apt-get update \
