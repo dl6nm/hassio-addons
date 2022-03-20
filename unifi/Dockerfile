@@ -8,13 +8,16 @@ SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 # Setup base system
 ARG BUILD_ARCH=amd64
 RUN \
-    apt-get update \
+    wget -qO - https://www.mongodb.org/static/pgp/server-3.4.asc | sudo apt-key add - \
+    && echo "deb http://repo.mongodb.org/apt/debian jessie/mongodb-org/3.4 main" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.4.list \
+    \
+    && apt-get update \
     && apt-get install -y --no-install-recommends \
         binutils=2.34-6ubuntu1.3 \
         jsvc=1.0.15-8 \
         libcap2=1:2.32-1 \
         logrotate=3.14.0-4ubuntu3 \
-        mongodb-server=1:3.4.14-3ubuntu2 \
+        mongodb-org \
         openjdk-8-jdk-headless=8u312-b07-0ubuntu1~20.04 \
     \
     && curl -J -L -o /tmp/unifi.deb \
