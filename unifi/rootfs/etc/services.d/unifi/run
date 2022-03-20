@@ -1,20 +1,21 @@
 #!/usr/bin/with-contenv bashio
 # ==============================================================================
-# Home Assistant Community Add-on: UniFi Controller
-# Runs the UniFi Controller
+# Home Assistant Community Add-on: UniFi Network Application
+# Runs the UniFi Network Application
 # ==============================================================================
 declare -a options
 declare xmx
 declare xms
 
-bashio::log.info 'Starting the UniFi Controller...'
+bashio::log.info 'Now starting the UniFi Network Application...'
+bashio::log.info 'Note: No add-on specific logs beyond this point.'
 
-xmx=1024
+xmx=256
 if bashio::config.has_value 'memory_max'; then
     xmx=$(bashio::config 'memory_max')
 fi
 
-xms=512
+xms=128
 if bashio::config.has_value 'memory_init'; then
     xms=$(bashio::config 'memory_init')
 fi
